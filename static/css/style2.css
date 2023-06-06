@@ -8,7 +8,7 @@ html {
   }
   
   
-  .particles-js-canvas-el{
+.particles-js-canvas-el{
     left: 0;
     width: 100%;
     position: fixed;
@@ -262,12 +262,12 @@ html {
     border-radius: 6px;
     margin-bottom: 5%;
     align-items: center;
-    height : 60%;
+    height : 70%;
   }
   
   .form2 .txt {
     width: 100%;
-    height: 12%;
+    height: 8%;
     margin-top: 3%;
     margin-bottom: 10%;
     border-radius: 6px;
@@ -277,7 +277,7 @@ html {
   
   .form2 .submit{
     width: 102%;
-    height: 15%;
+    height: 10%;
     padding:5px 0px 5px 0px;
     border-radius: 6px;
     font-size: 20px;

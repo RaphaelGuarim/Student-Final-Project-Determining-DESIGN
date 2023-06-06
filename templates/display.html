@@ -3,17 +3,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Display Data</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <script defer src="../static/js/script2.js"></script>
+    <title>Maquette</title>
+    <link rel="stylesheet" href="../static/css/style3.css" />
+    <script src="../static/js/lib/particles.min.js"></script>
+    <script src="../static/js/main.js"></script>
 </head>
-<body>
-    <h1>Voici les données:</h1>
-
-    <ul>
-        {% for key, value in mydata.items %}
-            <li>{{ key }}: {{ value }}</li>
-        {% endfor %}
-    </ul>
+<body id="background-animation">
+    <header>
+        <div class="left-side">
+          <a target="_blank" class="logo" href="https://polnep.ac.id/"
+          ><img class="logo" src="../static/img/logo.png"
+          /></a>
+          <div id="divv" class ="divv"></div>
+          <h1 id="texts">
+            Politeknik<br />
+            Negeri <br />Pontianak
+          </h1>
+        </div>
+        <div class="right-side">
+          <a class="language"><img src="../static/img/english.png" /></a>
+          <a class="light-mode"><img class="moon" id="moon" src="../static/img/moon-regular.svg" onclick="dark()" /></a>
+        </div>
+    </header>
+    <div class= "content"> 
+      <p class= "title"> Selamat Datang {{mydata.nom}} </p>
+      <form>
+        <div class="question">
+        <label for="outside">What are your favorite subjects outside informatics?</label>
+        <fieldset name="outside" id="outside">
+          <input type="checkbox" id="maths" name="sujets[]" value="maths">
+          <label for="maths">Mathematics</label><br>
+          <input type="checkbox" id="histoire" name="sujets[]" value="histoire">
+          <label for="histoire">History</label><br>
+          <input type="checkbox" id="langues" name="sujets[]" value="langues">
+          <label for="langues">Language (English, Spanish, etc.)</label><br>
+          <input type="checkbox" id="art" name="sujets[]" value="art">
+          <label for="art">Art</label><br>
+          <input type="checkbox" id="physique" name="sujets[]" value="physique">
+          <label for="physique">Physics</label><br>
+          <input type="checkbox" id="biologie" name="sujets[]" value="biologie">
+          <label for="biologie">Biology</label><br>
+          <input type="checkbox" id="economie" name="sujets[]" value="economie">
+          <label for="economie">Economy</label><br>
+          <input type="checkbox" id="sport" name="sujets[]" value="sport">
+          <label for="sport">Sport</label><br>
+          <input type="checkbox" id="geographie" name="sujets[]" value="geographie">
+          <label for="geographie">Geography</label><br>
+        </fieldset>
+      </div>
+      <div class="question">
+        <label for="inside">What is your favorite subject in Informatics? </label>
+        <fieldset name= "inside" id="inside">
+          <input type="checkbox" id="desain-web" name="sujets[]" value="Desain web">
+          <label for="desain-web">Desain web</label><br>
+          <input type="checkbox" id="sistem-operasi" name="sujets[]" value="Sistem Operasi">
+          <label for="sistem-operasi">Sistem Operasi</label><br>
+          <input type="checkbox" id="pemrograman-visual" name="sujets[]" value="Pemrograman Visual">
+          <label for="pemrograman-visual">Pemrograman Visual</label><br>
+          <input type="checkbox" id="algoritma-pemrograman" name="sujets[]" value="Algoritma Pemrograman">
+          <label for="algoritma-pemrograman">Algoritma Pemrograman</label><br>
+          <input type="checkbox" id="data" name="sujets[]" value="Data">
+          <label for="data">Data</label><br>
+          <input type="checkbox" id="pemrograman-berorientasi-objek" name="sujets[]" value="Pemrograman Berorientasi Objek">
+          <label for="pemrograman-berorientasi-objek">Pemrograman Berorientasi Objek</label><br>
+          <input type="checkbox" id="statistika-dan-probabilitas" name="sujets[]" value="Statistika dan Probabilitas">
+          <label for="statistika-dan-probabilitas">Statistika dan Probabilitas</label><br>
+          <input type="checkbox" id="pemrograman-mobile" name="sujets[]" value="Pemrograman Mobile">
+          <label for="pemrograman-mobile">Pemrograman Mobile</label><br>
+          <input type="checkbox" id="jaringan-komputer" name="sujets[]" value="Jaringan Komputer">
+          <label for="jaringan-komputer">Jaringan Komputer</label><br>
+          <input type="checkbox" id="grafika-komputer" name="sujets[]" value="Grafika Komputer">
+          <label for="grafika-komputer">Grafika Komputer</label><br>
+          <input type="checkbox" id="pemrograman-web" name="sujets[]" value="Pemrograman Web">
+          <label for="pemrograman-web">Pemrograman Web</label><br>
+          <input type="checkbox" id="komputer-animasi" name="sujets[]" value="Komputer Animasi">
+          <label for="komputer-animasi">Komputer Animasi</label><br>
+          <input type="checkbox" id="pengolahan-citra-digital" name="sujets[]" value="Pengolahan Citra Digital">
+          <label for="pengolahan-citra-digital">Pengolahan Citra Digital</label><br>
+          <input type="checkbox" id="sistem-keamanan-informasi" name="sujets[]" value="Sistem Keamanan Informasi">
+          <label for="sistem-keamanan-informasi">Sistem Keamanan Informasi</label><br>
+        </fieldset>
+      </div>
+      <div class="question">
+        <label for="other">What are your hobbies or interests outside of school ?</label>
+        <fieldset name= "other" id="other">
+          <input type="checkbox" id="sport" name="sujets[]" value="Sport">
+          <label for="sport">Sport</label>
+          <input type="checkbox" id="art" name="sujets[]" value="Art">
+          <label for="art">Art</label>
+          <input type="checkbox" id="movies" name="sujets[]" value="Movies">
+          <label for="movies">Movies</label>
+          <input type="checkbox" id="books" name="sujets[]" value="Read books">
+          <label for="books">Read books</label>
+          <input type="checkbox" id="games" name="sujets[]" value="Video Games">
+          <label for="games">Video Games</label>
+          <input type="checkbox" id="coding" name="sujets[]" value="Coding">
+          <label for="coding">Coding</label>
+          <input type="checkbox" id="friends" name="sujets[]" value="Hang out with friends">
+          <label for="friends">Hang out with friends</label>
+          <input type="checkbox" id="photography" name="sujets[]" value="Photography">
+          <label for="photography">Photography</label>
+          <input type="checkbox" id="mechanical" name="sujets[]" value="Mechanical">
+          <label for="mechanical">Mechanical</label>
+          <input type="checkbox" id="socialmedia" name="sujets[]" value="Social Media">
+          <label for="socialmedia">Social Media</label>
+        </fieldset>
+      </div>
+      <div class="question">
+        <label for="name">Quick IQ Test :  </label><a href="https://www.free-iqtest.net/">Test Link</a><br>
+        <label for="name">Put your IQ score here  </label><br>
+        <input type="text" id="name" name="name" class="txt"><br>
+      </div>
+      </form>
+    </div>
 </body>
 </html>
-```

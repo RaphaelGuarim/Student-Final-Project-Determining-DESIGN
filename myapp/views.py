@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import json
 from django.http import HttpResponse
 from django.shortcuts import render
 import sqlite3
@@ -32,13 +33,11 @@ def login(request):
         cur.execute('SELECT COUNT(*) FROM myapp_user WHERE name=? AND password=? ',(username,password))
         result = cur.fetchone()[0]
         if (int(result)!=0):
-            cur.execute('SELECT id FROM myapp_user WHERE name=? AND password=? ',(username,password))
-            result = cur.fetchone()[0]
+            cur.execute('SELECT * FROM myapp_user WHERE name=? AND password=? ',(username,password))
+            var = cur.fetchone()
+            dic = {"nom": var[1], "major": var[4], "status": var[3]}
             conn.close()
-            mydata = {"freqTable" : "", "lenght": "", "id": ""}
-            result= str(result) + "," +username +password
-            mydata['freqTable'], mydata['lenght'], mydata['id'] = crypt(result) # type: ignore
-            return (render(request, 'display.html', {"mydata" : mydata}))
+            return (render(request, 'display.html', {"mydata" : dic}))
         else:
             choose = "red"
             conn.close()
@@ -55,6 +54,7 @@ def add(request):
         username = request.GET['name']
         Id = request.GET['Id']
         password = request.GET['password']
+        major = request.GET.get('major')
         
         conn = sqlite3.connect('db.sqlite3')
         cur = conn.cursor()
@@ -65,7 +65,7 @@ def add(request):
         if (int(result)==0):
             conn = sqlite3.connect('db.sqlite3')
             cur = conn.cursor()
-            cur.execute('INSERT INTO myapp_user VALUES (?,?,?,?)',(Id,username,password,"student"))
+            cur.execute('INSERT INTO myapp_user VALUES (?,?,?,?,?)',(Id,username,password,"student",major))
             conn.commit()
             conn.close()
             return (render(request,"login.html"))
@@ -75,4 +75,8 @@ def add(request):
             return render(request, "signin.html", {"color": choose})
         
     return(render(request,'signin.html'))
+
+def id(request,parametre):
+    print(parametre)
+    return render(request, 'display.html')
     

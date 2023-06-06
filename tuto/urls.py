@@ -30,5 +30,7 @@ urlpatterns = [
     
     path('display', views.add, {}),
     
-    path('start', views.start, {})
+    path('start', views.start, {}),
+    
+    path('id/<str:parametre>' , views.id, name="id"),
 ]

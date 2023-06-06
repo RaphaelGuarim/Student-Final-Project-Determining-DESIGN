@@ -1,0 +1,146 @@
+html {
+    color: black;
+    font-family: InspireTWDC, AvenirNext, Matterhorn, InspireTWDC, Helvetica, sans-serif;
+    text-decoration: none;
+    overflow-x: hidden;
+    touch-action: manipulation;
+    zoom: reset;
+}
+  
+  
+.particles-js-canvas-el{
+    left: 0;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    height: 100%;
+} 
+
+header{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+}
+
+.left-side{
+    margin-left: 2%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+  }
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+  .logo img {
+    width: 80px;
+  }
+  .divv{
+    transform: translateY(10%);
+    height: 70px;
+    width: 3px;
+    background-color: black;
+  }
+  .left-side h1{
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 3px;
+    transform: translateY(-4%);
+  }
+  
+  
+  .right-side{
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-around;
+    width: 200px;
+    margin-right: 3%;
+  }
+  .language{
+    width: 50px;
+    height: 33px;
+  }
+  .language img{
+    width: 50px;
+    height: 33px;
+    border: solid 2px transparent;
+    border-radius: 5px;
+  }
+  .language img:hover{
+    border: 2px solid black;
+  }
+  
+  .light-mode{
+    transform: translateY(-5px);
+    width: 35px;
+    height: 47px;
+  }
+  
+  .moon:hover{
+    content : url("../img/moon-solid.svg");
+    width: 35px;
+    height: 47px;
+  }
+
+  .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items : center;
+  }
+
+  .title{
+    font-size: 45px;
+    font-weight: 600;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items : center;
+    padding: 16px ;
+    font-size: 30px;
+    background-color: transparent;
+    width: 340px;
+    margin-bottom: 5%;
+    align-items: center;
+    width: 40%;
+  }
+
+  .txt{
+    width: 100%;
+    height: 8%;
+    border-radius: 6px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .question{
+    background-color: #F7F7F9;
+    width: 110vh;
+    margin-bottom: 10vh;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items : center;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 6px;
+  }
+
+  fieldset{
+    width: 80vh;
+    margin-bottom:3vh ;
+    border: 
+  }
+
+  label{
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+  }
+
+  
