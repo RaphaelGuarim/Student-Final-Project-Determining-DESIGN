@@ -13,7 +13,7 @@ Determine of Final Project Topic for Students of Politeknik Negeri Pontianak wit
   
   - Website Design and Implementation ⌛
 
-  - Machine Learning Model ⌛
+  - Machine Learning Model ✔️
 
   - Current Trend Analysis 
 
