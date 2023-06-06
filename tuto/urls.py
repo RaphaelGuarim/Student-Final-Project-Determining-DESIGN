@@ -33,4 +33,6 @@ urlpatterns = [
     path('start', views.start, {}),
     
     path('id/<str:parametre>' , views.id, name="id"),
+    
+    path('result', views.result, {})
 ]

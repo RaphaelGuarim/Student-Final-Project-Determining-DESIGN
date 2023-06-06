@@ -79,4 +79,8 @@ def add(request):
 def id(request,parametre):
     print(parametre)
     return render(request, 'display.html')
+
+def result(request):
+    
+    return render(request,"result.html")
     

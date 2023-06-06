@@ -31,93 +31,66 @@
     </header>
     <div class= "content"> 
       <p class= "title"> Selamat Datang {{mydata.nom}} </p>
+      <p class= "subtitle">Jawab pertanyaan ini untuk menentukan profil Anda </p>
       <form>
         <div class="question">
-        <label for="outside">What are your favorite subjects outside informatics?</label>
+        <label for="outside" class="big" >What are your favorites subjects outside informatics?</label>
         <fieldset name="outside" id="outside">
-          <input type="checkbox" id="maths" name="sujets[]" value="maths">
-          <label for="maths">Mathematics</label><br>
-          <input type="checkbox" id="histoire" name="sujets[]" value="histoire">
-          <label for="histoire">History</label><br>
-          <input type="checkbox" id="langues" name="sujets[]" value="langues">
-          <label for="langues">Language (English, Spanish, etc.)</label><br>
-          <input type="checkbox" id="art" name="sujets[]" value="art">
-          <label for="art">Art</label><br>
-          <input type="checkbox" id="physique" name="sujets[]" value="physique">
-          <label for="physique">Physics</label><br>
-          <input type="checkbox" id="biologie" name="sujets[]" value="biologie">
-          <label for="biologie">Biology</label><br>
-          <input type="checkbox" id="economie" name="sujets[]" value="economie">
-          <label for="economie">Economy</label><br>
-          <input type="checkbox" id="sport" name="sujets[]" value="sport">
-          <label for="sport">Sport</label><br>
-          <input type="checkbox" id="geographie" name="sujets[]" value="geographie">
-          <label for="geographie">Geography</label><br>
+          <button type="button" class="select" onclick="add(this,1)" value="Mathematics"> Mathematics </button><br>
+          <button type="button" class="select" onclick="add(this,1)" value="History"> History </button><br>
+          <button type="button" class="select" onclick="add(this,1)" value="Language"> Language</button><br>
+          <button type="button" class="select" onclick="add(this,1)" value="Art"> Art </button><br>
+          <button type="button" class="select" onclick="add(this,1)" value="Physics"> Physics </button><br>
+          <button type="button" class="select" onclick="add(this,1)" value="Biology"> Biology </button><br>
+          <button type="button" class="select" onclick="add(this,1)" value="Economy"> Economy </button><br>
+          <button type="button" class="select" onclick="add(this,1)" value="Sport"> Sport </button><br>
+          <button type="button" class="select" onclick="add(this,1)" value="Geography"> Geography </button><br>
+          <p class="hide" id="hide"> Anda hanya dapat memilih 4 mata pelajaran </p>
         </fieldset>
       </div>
       <div class="question">
-        <label for="inside">What is your favorite subject in Informatics? </label>
+        <label for="inside" class="big" >What is your favorites subjects in Informatics? </label>
         <fieldset name= "inside" id="inside">
-          <input type="checkbox" id="desain-web" name="sujets[]" value="Desain web">
-          <label for="desain-web">Desain web</label><br>
-          <input type="checkbox" id="sistem-operasi" name="sujets[]" value="Sistem Operasi">
-          <label for="sistem-operasi">Sistem Operasi</label><br>
-          <input type="checkbox" id="pemrograman-visual" name="sujets[]" value="Pemrograman Visual">
-          <label for="pemrograman-visual">Pemrograman Visual</label><br>
-          <input type="checkbox" id="algoritma-pemrograman" name="sujets[]" value="Algoritma Pemrograman">
-          <label for="algoritma-pemrograman">Algoritma Pemrograman</label><br>
-          <input type="checkbox" id="data" name="sujets[]" value="Data">
-          <label for="data">Data</label><br>
-          <input type="checkbox" id="pemrograman-berorientasi-objek" name="sujets[]" value="Pemrograman Berorientasi Objek">
-          <label for="pemrograman-berorientasi-objek">Pemrograman Berorientasi Objek</label><br>
-          <input type="checkbox" id="statistika-dan-probabilitas" name="sujets[]" value="Statistika dan Probabilitas">
-          <label for="statistika-dan-probabilitas">Statistika dan Probabilitas</label><br>
-          <input type="checkbox" id="pemrograman-mobile" name="sujets[]" value="Pemrograman Mobile">
-          <label for="pemrograman-mobile">Pemrograman Mobile</label><br>
-          <input type="checkbox" id="jaringan-komputer" name="sujets[]" value="Jaringan Komputer">
-          <label for="jaringan-komputer">Jaringan Komputer</label><br>
-          <input type="checkbox" id="grafika-komputer" name="sujets[]" value="Grafika Komputer">
-          <label for="grafika-komputer">Grafika Komputer</label><br>
-          <input type="checkbox" id="pemrograman-web" name="sujets[]" value="Pemrograman Web">
-          <label for="pemrograman-web">Pemrograman Web</label><br>
-          <input type="checkbox" id="komputer-animasi" name="sujets[]" value="Komputer Animasi">
-          <label for="komputer-animasi">Komputer Animasi</label><br>
-          <input type="checkbox" id="pengolahan-citra-digital" name="sujets[]" value="Pengolahan Citra Digital">
-          <label for="pengolahan-citra-digital">Pengolahan Citra Digital</label><br>
-          <input type="checkbox" id="sistem-keamanan-informasi" name="sujets[]" value="Sistem Keamanan Informasi">
-          <label for="sistem-keamanan-informasi">Sistem Keamanan Informasi</label><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Desain web"> Desain web </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Sistem Operasi"> Sistem Operasi </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Pemrograman Visual"> Pemrograman Visual </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Algoritma Pemrograman"> Algoritma Pemrograman </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Data"> Data </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Pemrograman Berorientasi Objek"> Pemrograman Berorientasi Objek </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Statistika dan Probabilitas"> Statistika dan Probabilitas </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Pemrograman Mobile"> Pemrograman Mobile </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Jaringan Komputer"> Jaringan Komputer </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Grafika Komputer"> Grafika Komputer </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Pemrograman Web"> Pemrograman Web </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Komputer Animasi"> Komputer Animasi </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Pengolahan Citra Digital"> Pengolahan Citra Digital </button><br>
+          <button type="button" class="select" onclick="add(this,2)" value="Sistem Keamanan Informasi"> Sistem Keamanan Informasi </button><br>
+          <p class="hide" id="hide2"> Anda hanya dapat memilih 4 mata pelajaran </p>
         </fieldset>
       </div>
       <div class="question">
         <label for="other">What are your hobbies or interests outside of school ?</label>
         <fieldset name= "other" id="other">
-          <input type="checkbox" id="sport" name="sujets[]" value="Sport">
-          <label for="sport">Sport</label>
-          <input type="checkbox" id="art" name="sujets[]" value="Art">
-          <label for="art">Art</label>
-          <input type="checkbox" id="movies" name="sujets[]" value="Movies">
-          <label for="movies">Movies</label>
-          <input type="checkbox" id="books" name="sujets[]" value="Read books">
-          <label for="books">Read books</label>
-          <input type="checkbox" id="games" name="sujets[]" value="Video Games">
-          <label for="games">Video Games</label>
-          <input type="checkbox" id="coding" name="sujets[]" value="Coding">
-          <label for="coding">Coding</label>
-          <input type="checkbox" id="friends" name="sujets[]" value="Hang out with friends">
-          <label for="friends">Hang out with friends</label>
-          <input type="checkbox" id="photography" name="sujets[]" value="Photography">
-          <label for="photography">Photography</label>
-          <input type="checkbox" id="mechanical" name="sujets[]" value="Mechanical">
-          <label for="mechanical">Mechanical</label>
-          <input type="checkbox" id="socialmedia" name="sujets[]" value="Social Media">
-          <label for="socialmedia">Social Media</label>
+          <button type="button" class="select" onclick="add(this,3)" value="Sport"> Sport </button><br>
+          <button type="button" class="select" onclick="add(this,3)" value="Art"> Art </button><br>
+          <button type="button" class="select" onclick="add(this,3)" value="Movies"> Movies </button><br>
+          <button type="button" class="select" onclick="add(this,3)" value="Read books"> Read books </button><br>
+          <button type="button" class="select" onclick="add(this,3)" value="Video Games"> Video Games </button><br>
+          <button type="button" class="select" onclick="add(this,3)" value="Coding"> Coding </button><br>
+          <button type="button" class="select" onclick="add(this,3)" value="Hang out with friends"> Hang out with friends </button><br>
+          <button type="button" class="select" onclick="add(this,3)" value="Photography"> Photography </button><br>
+          <button type="button" class="select" onclick="add(this,3)" value="Mechanical"> Mechanical </button><br>
+          <button type="button" class="select" onclick="add(this,3)" value="Social Media"> Social Media </button><br>
+          <button type="button" class="select" onclick="add(this,3)" value="Mathematics"> Mathematics </button><br>
+          <p class="hide" id="hide3"> Anda hanya dapat memilih 4 mata pelajaran </p>
         </fieldset>
       </div>
       <div class="question">
-        <label for="name">Quick IQ Test :  </label><a href="https://www.free-iqtest.net/">Test Link</a><br>
-        <label for="name">Put your IQ score here  </label><br>
+        <label for="name">Quick IQ Test : <a href="https://www.free-iqtest.net/">Test Link</a> </label>
+        <label for="name">Put your IQ score here : </label>
         <input type="text" id="name" name="name" class="txt"><br>
       </div>
+      <button type="button" class="submit" onclick="send()"> Hasil </button>
       </form>
     </div>
 </body>
