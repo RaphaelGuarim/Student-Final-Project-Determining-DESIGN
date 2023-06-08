@@ -21,16 +21,18 @@ from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+
     path('', views.homepage, {}),
-    
+
     path('login', views.login, {}),
-    
+
     path('signin', views.signin, {}),
-    
+
     path('display', views.add, {}),
-    
+
     path('start', views.start, {}),
-    
-    path('id/<str:parametre>' , views.id, name="id"),
+
+    path('id/<str:parametre>', views.id, name="id"),
+
+    path('profile', views.profile, {})
 ]
