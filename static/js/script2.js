@@ -57,7 +57,11 @@ function add(element,number){
 }
 
 function send(){
-    txt = document.getElementsByClassName("txt")[0]
-    var url = "result?txt=" + txt.value + "&values=" + values + "&values2=" + values2 + "&values3=" + values3;
+    jna = document.getElementsByClassName("txt")[0]
+    jwp = document.getElementsByClassName("txt")[1]
+    jp = document.getElementsByClassName("txt")[2]
+    iq = document.getElementsByClassName("txt")[3]
+    name = document.getElementsByClassName("name")[0].getAttribute("value")
+    var url = "result?iq=" + iq.value + "&name=" + name + "&values=" + values + "&values2=" + values2 + "&values3=" + values3 + "&jna=" + jna.value + "&jwp=" + jwp.value + "&jp=" + jp.value ;
     window.location.href = url;
 }

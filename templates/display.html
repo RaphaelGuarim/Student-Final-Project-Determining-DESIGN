@@ -30,7 +30,7 @@
         </div>
     </header>
     <div class= "content"> 
-      <p class= "title"> Selamat Datang {{mydata.nom}} </p>
+      <p class= "title name" value="{{mydata.nom}}"> Selamat Datang {{mydata.nom}}  </p>
       <p class= "subtitle">Jawab pertanyaan ini untuk menentukan profil Anda </p>
       <form>
         <div class="question">
@@ -83,6 +83,14 @@
           <button type="button" class="select" onclick="add(this,3)" value="Social Media"> Social Media </button><br>
           <p class="hide" id="hide3"> Anda hanya dapat memilih 9 mata pelajaran </p>
         </fieldset>
+      </div>
+      <div class="question">
+        <label for="jna">Junior Network Administrator Average  </label>
+        <input type="text" id="jna" name="jna" class="txt"><br>
+        <label for="jwp">Junior Web Programer Average  </label>
+        <input type="text" id="jwp" name="jwp" class="txt"><br>
+        <label for="jp">Junior Programer </label>
+        <input type="text" id="jp" name="jp" class="txt"><br>
       </div>
       <div class="question">
         <label for="name">Quick IQ Test : <a href="https://www.free-iqtest.net/">Test Link</a> </label>

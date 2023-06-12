@@ -99,11 +99,15 @@ def id(request, parametre):
     return render(request, 'display.html')
 
 def result(request):
-    txt = request.GET.get('txt', None)
+    iq = request.GET.get('iq', None)
+    name = request.GET.get('name', None)
     values = request.GET.get('values', None)
     values2 = request.GET.get('values2', None)
     values3 = request.GET.get('values3', None)
-    print(txt,values,values2,values3)
+    juniorNetworkAdministrator = request.GET.get('jna',None) 
+    juniorWebProgramer = request.GET.get('jwp',None) 
+    juniorProgramer = request.GET.get('jp',None) 
+    print(iq,name,values,values2,values3,juniorNetworkAdministrator,juniorWebProgramer,juniorProgramer)
     
     #---- MODEL ----#
     
