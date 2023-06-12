@@ -58,18 +58,34 @@ header{
     width: 200px;
     margin-right: 3%;
   }
-  .language{
-    width: 50px;
-    height: 33px;
+  
+  .contain {
+    margin-top: -12px;
+    width: 40px;
+    height: 40px;
   }
-  .language img{
-    width: 50px;
-    height: 33px;
-    border: solid 2px transparent;
-    border-radius: 5px;
+  
+  .profile-icon {
+    height: 100%;
+    width: 100%;
+    border: solid 2px black;
+    border-radius: 50px;
+    padding: 5px;
+    margin-top: 3px;
+    content: url('../img/avatar.png');
   }
-  .language img:hover{
-    border: 2px solid black;
+  .profile-icon:hover {
+    border: 2px solid gray;
+  }
+  
+  .dark-profile {
+    height: 100%;
+    width: 100%;
+    border: solid 2px white;
+    border-radius: 50px;
+    padding: 5px;
+    margin-top: 3px;
+    content: url('../img/black-avatar.png');
   }
   
   .light-mode{

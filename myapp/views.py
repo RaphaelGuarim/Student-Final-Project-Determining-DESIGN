@@ -92,6 +92,14 @@ def id(request, parametre):
     return render(request, 'display.html')
 
 def result(request):
+    txt = request.GET.get('txt', None)
+    values = request.GET.get('values', None)
+    values2 = request.GET.get('values2', None)
+    values3 = request.GET.get('values3', None)
+    print(txt,values,values2,values3)
+    
+    
+    
     return render(request,"result.html")
     
 

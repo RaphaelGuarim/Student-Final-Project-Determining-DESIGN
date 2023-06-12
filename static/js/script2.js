@@ -23,13 +23,15 @@ function add(element,number){
                 text.className = "error"
             }
         }else{
-            if (values3.length < 4){
+            if (values3.length < 9){
                 values3.push(element.value)
                 element.className = "dark-select";
-            }else{
+            }
+            else{
                 text = document.getElementById("hide3");
                 text.className = "error"
             }
+            
         }
         
     }else{

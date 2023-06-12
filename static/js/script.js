@@ -35,6 +35,8 @@ function dark() {
         divv.className = "dark-div";
         var moon = document.getElementById("moon");
         moon.className = "moon-black"
+        var profile = document.getElementById("profile");
+        profile.className = "dark-profile"
         var baymax = document.getElementById("baymax");
         baymax.className = "baymax hide";
         setTimeout(() => {
@@ -55,6 +57,8 @@ function dark() {
         divv.className = "divv";
         var moon = document.getElementById("moon");
         moon.className = "moon"
+        var profile = document.getElementById("profile");
+        profile.className = "profile-icon"
         var baymax = document.getElementById("baymax");
         baymax.className = "baymax hide";
         setTimeout(() => {
