@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script defer src="../static/js/profile.js"></script>
+        <link rel="stylesheet" href="../static/css/profile.css" />
+        <link rel="stylesheet" href="../static/css/header.css" />
+        <title>Profile</title>
+      </head>
+      <body>
+        <header>
+          <div class="left-side">
+            <a target="_blank" class="logo" href="https://polnep.ac.id/"
+              ><img class="logo" src="../static/img/logo.png"
+            /></a>
+            <div id="divv" class="divv"></div>
+            <h1 id="texts">
+              Politeknik<br />
+              Negeri <br />Pontianak
+            </h1>
+          </div>
+          <div class="right-side">
+            <a class="light-mode"
+              ><img
+                class="moon"
+                id="moon"
+                src="../static/img/moon-regular.svg"
+                onclick="dark()"
+            /></a>
+            <a class="profile-icon" href="/profile"><img src="../static/img/drake.jpg" /></a>
+          </div>
+        </header>
+        <div>
+            <script>
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const subjectsOutside = urlParams.get('subjectsoutside')
+                const subjectsIT = urlParams.get('subjectsIT')
+                const hobbies = urlParams.get('hobbies')
+                console.log(subjectsOutside + "\n" + subjectsIT + "\n" + hobbies)
+            </script>
+        </div>
+</html>

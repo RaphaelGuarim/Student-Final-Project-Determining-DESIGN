@@ -48,7 +48,8 @@ def login(request):
                 'SELECT * FROM myapp_user WHERE name=? AND password=? ', (username, password))
             var = cur.fetchone()
             dic = {"nom": var[1], "major": var[4], "status": var[3]}
-            dict = {"id" : var[0], "name" : var[1], "status": var[3], "major" : var[4]}
+            dict = {"id": var[0], "name": var[1],
+                    "status": var[3], "major": var[4]}
             conn.close()
             logged = True
             return (render(request, 'display.html', {"mydata": dic}))
@@ -98,22 +99,24 @@ def id(request, parametre):
     print(parametre)
     return render(request, 'display.html')
 
+
 def result(request):
     iq = request.GET.get('iq', None)
     name = request.GET.get('name', None)
     values = request.GET.get('values', None)
     values2 = request.GET.get('values2', None)
     values3 = request.GET.get('values3', None)
-    juniorNetworkAdministrator = request.GET.get('jna',None) 
-    juniorWebProgramer = request.GET.get('jwp',None) 
-    juniorProgramer = request.GET.get('jp',None) 
-    print(iq,name,values,values2,values3,juniorNetworkAdministrator,juniorWebProgramer,juniorProgramer)
-    
-    #---- MODEL ----#
-    
-    return render(request,"result.html")
-    
+    juniorNetworkAdministrator = request.GET.get('jna', None)
+    juniorWebProgramer = request.GET.get('jwp', None)
+    juniorProgramer = request.GET.get('jp', None)
+    print(iq, name, values, values2, values3, juniorNetworkAdministrator,
+          juniorWebProgramer, juniorProgramer)
+
+    # ---- MODEL ----#
+
+    return render(request, "result.html")
+
 
 def profile(request):
-    print(logged,dict)
+    print(logged, dict)
     return (render(request, 'profile.html', {"mydata": dict}))
