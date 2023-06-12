@@ -50,7 +50,6 @@ function add(element, number) {
       values3.splice(index, 1);
     }
   }
-  console.log(values);
 }
 
 function send() {

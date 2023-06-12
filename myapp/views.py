@@ -6,6 +6,7 @@ from django.shortcuts import render
 import sqlite3
 import security.huffman as h
 
+
 # Create your views here.
 
 logged = False
@@ -111,6 +112,56 @@ def result(request):
     juniorProgramer = request.GET.get('jp', None)
     print(iq, name, values, values2, values3, juniorNetworkAdministrator,
           juniorWebProgramer, juniorProgramer)
+
+
+def getPrediction(studentIQ: int, subjectsOutside: list, subjectsIT: list, name: str, hobbies: list) -> str:
+    import tensorflow as tf
+    import pandas as pd
+    import numpy as np
+    # Import the model via the load_model function
+    model = tf.keras.models.load_model('./model/settings')
+
+    # Declaration of class names
+    CLASS_NAMES = {'Junior Network Administrator',
+                   'Junior Programmer', 'Junior Web Programmer'}
+
+    variables = {
+        "iq": studentIQ,
+        "interest_outside_school": [subjectsOutside[0] if subjectsOutside[0] else "''"],
+        "interest_outside_school_2": [subjectsOutside[1] if subjectsOutside[1] else "''"],
+        "interest_outside_school_3": [subjectsOutside[2] if subjectsOutside[2] else "''"],
+        "interest_outside_school_4": [subjectsOutside[3] if subjectsOutside[3] else "''"],
+        "favorite_subject_it": [subjectsIT[0] if subjectsIT[0] else "''"],
+        "favorite_subject_it_2": [subjectsIT[1] if subjectsIT[1] else "''"],
+        "favorite_subject_it_3": [subjectsIT[2] if subjectsIT[2] else "''"],
+        "favorite_subject_it_4": [subjectsIT[3] if subjectsIT[3] else "''"],
+        "name": name,
+        "hobbies": [hobbies[0] if hobbies[0] else "''"],
+        "hobbies_2": [hobbies[1] if hobbies[1] else "''"],
+        "hobbies_3": [hobbies[2] if hobbies[2] else "''"],
+        "hobbies_4": [hobbies[3] if hobbies[3] else "''"],
+        "hobbies_5": [hobbies[4] if hobbies[4] else "''"],
+        "hobbies_6": [hobbies[5] if hobbies[5] else "''"],
+        "hobbies_7": [hobbies[6] if hobbies[6] else "''"],
+        "hobbies_8": [hobbies[7] if hobbies[7] else "''"],
+        "hobbies_9": [hobbies[8] if hobbies[8] else "''"],
+        "junior_network_administrator": 82.8,
+        "junior_web_programmer": 76.42,
+        "junior_programmer": 80.7,
+    }
+
+    input_dict = {name: tf.convert_to_tensor(
+        [value]) for name, value in variables.items()}
+    prediction = np.argmax(model.predict(input_dict))
+    prediction = pd.DataFrame(CLASS_NAMES)[0][prediction]
+
+
+def result(request):
+    studentIQ = request.GET.get('studentIQ', None)
+    subjectsOutside = request.GET.get('subjectsoutside', None).split(',')
+    subjectsIT = request.GET.get('subjectsIT', None).split(',')
+    hobbies = request.GET.get('hobbies', None).split(',')
+    name = request.GET['name']
 
     # ---- MODEL ----#
 
