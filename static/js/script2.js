@@ -57,17 +57,17 @@ function send() {
   jwp = document.getElementsByClassName("txt")[1];
   jp = document.getElementsByClassName("txt")[2];
   iq = document.getElementsByClassName("txt")[3];
-  name = document.getElementsByClassName("name")[0].getAttribute("value");
+  username = document.getElementsByClassName("name")[0].getAttribute("value");
   var url =
-    "result?iq=" +
+    "result?studentIQ=" +
     iq.value +
     "&name=" +
-    name +
-    "&values=" +
+    username +
+    "&subjectsOutside=" +
     values +
-    "&values2=" +
+    "&subjectsIT=" +
     values2 +
-    "&values3=" +
+    "&hobbies=" +
     values3 +
     "&jna=" +
     jna.value +
