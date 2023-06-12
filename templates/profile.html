@@ -56,7 +56,7 @@
           >
         </li>
       </nav>
-      <img src="../static/img/baymax-left.png" />
+      <img class="baymax hide" src="../static/img/baymax-left.png" />
     </div>
     <div class="profile">
       <h1 class="title">Parametres du compte</h1>
@@ -66,23 +66,23 @@
           <div class="profile-details">
             <img src="../static/img/drake.jpg" />
             <div>
-              <h1>Name</h1>
-              <p>Buisness Administration</p>
+              <h1>{{mydata.name}}</h1>
+              <p>{{mydata.major}}</p>
             </div>
           </div>
           <h1 class="personnal-informations">Personnal information</h1>
           <div class="informations">
             <div>
-              <label>First Name</label><br />
-              <span>Martin</span>
+              <label>Full Name</label><br />
+              <span>{{mydata.name}}</span>
             </div>
             <div>
-              <label>Last Name</label><br />
-              <span>Rigaux</span>
+              <label>Status</label><br />
+              <span>{{mydata.status}}</span>
             </div>
             <div>
               <label>Student ID</label><br />
-              <span>123456789</span>
+              <span>{{mydata.id}}</span>
             </div>
           </div>
 

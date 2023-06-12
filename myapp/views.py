@@ -8,6 +8,9 @@ import security.huffman as h
 
 # Create your views here.
 
+logged = False
+dict = {}
+
 
 def crypt(code: str):
     bitStream, freqTable = h.Huffman.encodeHuffman(code)
@@ -28,6 +31,8 @@ def start(request):
 
 
 def login(request):
+    global logged
+    global dict
     if request.method == 'GET':
         username = request.GET['name']
         password = request.GET['password']
@@ -43,7 +48,9 @@ def login(request):
                 'SELECT * FROM myapp_user WHERE name=? AND password=? ', (username, password))
             var = cur.fetchone()
             dic = {"nom": var[1], "major": var[4], "status": var[3]}
+            dict = {"id" : var[0], "name" : var[1], "status": var[3], "major" : var[4]}
             conn.close()
+            logged = True
             return (render(request, 'display.html', {"mydata": dic}))
         else:
             choose = "red"
@@ -98,10 +105,11 @@ def result(request):
     values3 = request.GET.get('values3', None)
     print(txt,values,values2,values3)
     
-    
+    #---- MODEL ----#
     
     return render(request,"result.html")
     
 
 def profile(request):
-    return (render(request, 'profile.html'))
+    print(logged,dict)
+    return (render(request, 'profile.html', {"mydata": dict}))
