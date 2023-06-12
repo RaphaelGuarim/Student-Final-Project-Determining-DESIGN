@@ -2,9 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Geologica", sans-serif;
+  font-family: "Rubik";
 }
-@import url("https://fonts.googleapis.com/css2?family=Geologica&display=swap");
+
+@font-face {
+  font-family: Rubik;
+  src: url("../fonts/Rubik.ttf");
+}
+
 .menu {
   float: left;
   width: 20vw;
@@ -52,7 +57,7 @@
 }
 .title {
   padding: 25px;
-  font-weight: 300;
+  font-weight: 500;
 }
 .container {
   background-color: white;
@@ -75,10 +80,14 @@
 }
 .informations {
   display: flex;
-  margin-top: 15px;
+  margin-top: 10px;
+  padding: 10px;
+  /* border: #27262b 1px solid; */
+  border-radius: 5px;
+  width: 90%;
 }
 .personnal-informations {
-  margin-top: 8px;
+  margin-top: 25px;
   font-size: 20px;
 }
 .informations div {
@@ -88,11 +97,33 @@
   color: rgb(43, 43, 43);
 }
 
+.profile-details {
+  display: flex;
+  margin-top: 15px;
+  padding: 10px;
+  /* border: #27262b 1px solid; */
+  border-radius: 5px;
+  width: 90%;
+}
+.profile-details img {
+  padding: 1px;
+  width: 80px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: #27262b solid 1px;
+}
+.profile-details h1 {
+  font-size: large;
+  margin-top: 20px;
+}
+.profile-details p {
+  color: gray;
+}
 table {
   border-spacing: 1;
   border-collapse: collapse;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
   width: 90%;
   position: relative;
