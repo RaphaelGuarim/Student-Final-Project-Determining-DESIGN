@@ -1,3 +1,2 @@
-myapp/__pycache__
-security/__pycache__
-tuto/__pycache__
+*/__pycache__
+*/*/__pycache__
