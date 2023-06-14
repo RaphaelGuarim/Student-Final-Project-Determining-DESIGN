@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from gpt import you
+import re
 import json
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -8,9 +10,10 @@ import security.huffman as h
 
 
 # Create your views here.
-
 logged = False
 dict = {}
+subjects = ""
+alreadyPredicted = False
 
 
 def crypt(code: str):
@@ -143,9 +146,40 @@ def getPrediction(studentIQ: int, subjectsOutside: list, subjectsIT: list, name:
         [value]) for name, value in variables.items()}
     prediction = np.argmax(model.predict(input_dict))
     prediction = pd.DataFrame(CLASS_NAMES)[0][prediction]
+    return prediction
+
+
+def decode_unicode(m):
+    return chr(int(m.group(1), 16))
+
+
+def get_query(number_subjects: int, specification: str, interests: list) -> str:
+    query = f"Write a list of {number_subjects} project topics in computer science on the theme of {specification} related to {[num for num in interests]}. Whitout introduction phrase and in row."
+    try:
+        res = you.Completion.create(prompt=query, detailed=True)
+        res.text = re.sub(r'\\u([\da-fA-F]{4})', decode_unicode, res.text)
+        return res
+    except Exception as s:
+        print(
+            f'An error as occured : {s}, please check the get_query function in the get_query file.')
+
+
+def getSubjects(studentIQ: int, subjectsOutside: list, subjectsIT: list, name: str, hobbies: list, juniorNetworkAdministrator: int,
+                juniorWebProgramer: int, juniorProgramer: int) -> str:
+    global alreadyPredicted
+    global subjects
+
+    if not alreadyPredicted:
+        alreadyPredicted = True
+        #
+        prediction = getPrediction(studentIQ, subjectsOutside, subjectsIT, name, hobbies, juniorNetworkAdministrator,
+                                   juniorWebProgramer, juniorProgramer)
+        subjects = get_query(10, prediction, hobbies).text
+    return subjects
 
 
 def result(request):
+    global subjects
     studentIQ = int(request.GET.get('studentIQ', None))
 
     subjectsOutside = ['', '', '', '']
@@ -169,9 +203,9 @@ def result(request):
     juniorProgramer = int(request.GET.get('jp', None))
 
     # ---- MODEL ----#
-    prediction = getPrediction(studentIQ, subjectsOutside, subjectsIT, name, hobbies, juniorNetworkAdministrator,
-                               juniorWebProgramer, juniorProgramer)
-    return render(request, "result.html")
+    subjects = getSubjects(studentIQ, subjectsOutside, subjectsIT, name, hobbies, juniorNetworkAdministrator,
+                           juniorWebProgramer, juniorProgramer)
+    return render(request, "result.html", {"subjects": subjects})
 
 
 def profile(request):
