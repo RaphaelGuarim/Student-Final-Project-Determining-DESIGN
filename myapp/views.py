@@ -107,6 +107,9 @@ def result(request):
     juniorNetworkAdministrator = request.GET.get('jna',None) 
     juniorWebProgramer = request.GET.get('jwp',None) 
     juniorProgramer = request.GET.get('jp',None) 
+    
+    
+    
     print(iq,name,values,values2,values3,juniorNetworkAdministrator,juniorWebProgramer,juniorProgramer)
     
     #---- MODEL ----#
