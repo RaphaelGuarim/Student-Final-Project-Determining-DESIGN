@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script defer src="../static/js/profile.js"></script>
+        <link rel="stylesheet" href="../static/css/profile.css" />
+        <link rel="stylesheet" href="../static/css/header.css" />
+        <title>Profile</title>
+      </head>
+      <body>
+        <header>
+          <div class="left-side">
+            <a target="_blank" class="logo" href="https://polnep.ac.id/"
+              ><img class="logo" src="../static/img/logo.png"
+            /></a>
+            <div id="divv" class="divv"></div>
+            <h1 id="texts">
+              Politeknik<br />
+              Negeri <br />Pontianak
+            </h1>
+          </div>
+          <div class="right-side">
+            <a class="light-mode"
+              ><img
+                class="moon"
+                id="moon"
+                src="../static/img/moon-regular.svg"
+                onclick="dark()"
+            /></a>
+            <a class="profile-icon" href="/profile"><img src="../static/img/drake.jpg" /></a>
+          </div>
+        </header>
+        <div>
+          <table>
+            <thead>
+              <tr class="table100-head">
+                <th class="column1">Type</th>
+                <th class="column2">Phrase</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="column1">Junior Web Programmer #1</td>
+                <td class="column2">
+                  Building a nutritional planning website for athletes in
+                  the sports industry
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          {{subjects}}
+        </div>
+</html>

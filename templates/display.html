@@ -2,103 +2,367 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <script defer src="../static/js/script2.js"></script>
     <title>Maquette</title>
     <link rel="stylesheet" href="../static/css/display.css" />
     <script src="../static/js/lib/particles.min.js"></script>
     <script src="../static/js/main.js"></script>
-</head>
-<body id="background-animation">
+  </head>
+  <body id="background-animation">
     <header>
-        <div class="left-side">
-          <a target="_blank" class="logo" href="https://polnep.ac.id/"
+      <div class="left-side">
+        <a target="_blank" class="logo" href="https://polnep.ac.id/"
           ><img class="logo" src="../static/img/logo.png"
-          /></a>
-          <div id="divv" class ="divv"></div>
-          <h1 id="texts">
-            Politeknik<br />
-            Negeri <br />Pontianak
-          </h1>
-        </div>
-        <div class="right-side">
-          <a class="light-mode" class="contain"><img class="moon" id="moon" src="../static/img/moon-regular.svg" onclick="dark()"/></a>
-          <a href="profile" class="contain"><img id="profile" class="profile-icon" src="../static/img/avatar.png" /></a>
-        </div>
+        /></a>
+        <div id="divv" class="divv"></div>
+        <h1 id="texts">
+          Politeknik<br />
+          Negeri <br />Pontianak
+        </h1>
+      </div>
+      <div class="right-side">
+        <a class="light-mode" class="contain"
+          ><img
+            class="moon"
+            id="moon"
+            src="../static/img/moon-regular.svg"
+            onclick="dark()"
+        /></a>
+        <a href="profile" class="contain"
+          ><img
+            id="profile"
+            class="profile-icon"
+            src="../static/img/avatar.png"
+        /></a>
+      </div>
     </header>
-    <div class= "content"> 
-      <p class= "title name" value="{{mydata.nom}}"> Selamat Datang {{mydata.nom}}  </p>
-      <p class= "subtitle">Jawab pertanyaan ini untuk menentukan profil Anda </p>
+    <div class="content">
+      <p class="title name" value="{{mydata.name}}">
+        Selamat Datang {{mydata.name}}
+      </p>
+      <p class="subtitle">Jawab pertanyaan ini untuk menentukan profil Anda</p>
       <form>
         <div class="question">
-        <label for="outside" class="big" >What are your favorites subjects outside informatics?</label>
-        <fieldset name="outside" id="outside">
-          <button type="button" class="select" onclick="add(this,1)" value="Mathematics"> Mathematics </button><br>
-          <button type="button" class="select" onclick="add(this,1)" value="History"> History </button><br>
-          <button type="button" class="select" onclick="add(this,1)" value="Language"> Language</button><br>
-          <button type="button" class="select" onclick="add(this,1)" value="Art"> Art </button><br>
-          <button type="button" class="select" onclick="add(this,1)" value="Physics"> Physics </button><br>
-          <button type="button" class="select" onclick="add(this,1)" value="Biology"> Biology </button><br>
-          <button type="button" class="select" onclick="add(this,1)" value="Economy"> Economy </button><br>
-          <button type="button" class="select" onclick="add(this,1)" value="Sport"> Sport </button><br>
-          <button type="button" class="select" onclick="add(this,1)" value="Geography"> Geography </button><br>
-          <p class="hide" id="hide"> Anda hanya dapat memilih 4 mata pelajaran </p>
-        </fieldset>
-      </div>
-      <div class="question">
-        <label for="inside" class="big" >What is your favorites subjects in Informatics? </label>
-        <fieldset name= "inside" id="inside">
-          <button type="button" class="select" onclick="add(this,2)" value="Desain web"> Desain web </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Sistem Operasi"> Sistem Operasi </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Pemrograman Visual"> Pemrograman Visual </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Algoritma Pemrograman"> Algoritma Pemrograman </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Data"> Data </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Pemrograman Berorientasi Objek"> Pemrograman Berorientasi Objek </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Statistika dan Probabilitas"> Statistika dan Probabilitas </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Pemrograman Mobile"> Pemrograman Mobile </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Jaringan Komputer"> Jaringan Komputer </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Grafika Komputer"> Grafika Komputer </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Pemrograman Web"> Pemrograman Web </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Komputer Animasi"> Komputer Animasi </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Pengolahan Citra Digital"> Pengolahan Citra Digital </button><br>
-          <button type="button" class="select" onclick="add(this,2)" value="Sistem Keamanan Informasi"> Sistem Keamanan Informasi </button><br>
-          <p class="hide" id="hide2"> Anda hanya dapat memilih 4 mata pelajaran </p>
-        </fieldset>
-      </div>
-      <div class="question">
-        <label for="other">What are your hobbies or interests outside of school ?</label>
-        <fieldset name= "other" id="other">
-          <button type="button" class="select" onclick="add(this,3)" value="Sport"> Sport </button><br>
-          <button type="button" class="select" onclick="add(this,3)" value="Art"> Art </button><br>
-          <button type="button" class="select" onclick="add(this,3)" value="Movies"> Movies </button><br>
-          <button type="button" class="select" onclick="add(this,3)" value="Read books"> Read books </button><br>
-          <button type="button" class="select" onclick="add(this,3)" value="Video Games"> Video Games </button><br>
-          <button type="button" class="select" onclick="add(this,3)" value="Coding"> Coding </button><br>
-          <button type="button" class="select" onclick="add(this,3)" value="Hang out with friends"> Hang out with friends </button><br>
-          <button type="button" class="select" onclick="add(this,3)" value="Photography"> Photography </button><br>
-          <button type="button" class="select" onclick="add(this,3)" value="Mechanical"> Mechanical </button><br>
-          <button type="button" class="select" onclick="add(this,3)" value="Social Media"> Social Media </button><br>
-          <p class="hide" id="hide3"> Anda hanya dapat memilih 9 mata pelajaran </p>
-        </fieldset>
-      </div>
-      <div class="question">
-        <label for="jna">Junior Network Administrator Average  </label>
-        <input type="text" id="jna" name="jna" class="txt"><br>
-        <label for="jwp">Junior Web Programer Average  </label>
-        <input type="text" id="jwp" name="jwp" class="txt"><br>
-        <label for="jp">Junior Programer </label>
-        <input type="text" id="jp" name="jp" class="txt"><br>
-      </div>
-      <div class="question">
-        <label for="name">Quick IQ Test : <a href="https://www.free-iqtest.net/">Test Link</a> </label>
-        <label for="name">Put your IQ score here : </label>
-        <input type="text" id="name" name="name" class="txt"><br>
-      </div>
-      <button type="button" class="submit" onclick="send()"> Hasil </button>
+          <label for="outside" class="big"
+            >What are your favorites subjects outside informatics?</label
+          >
+          <fieldset name="outside" id="outside">
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,1)"
+              value="Mathematics"
+            >
+              Mathematics</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,1)"
+              value="History"
+            >
+              History</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,1)"
+              value="Language"
+            >
+              Language</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,1)"
+              value="Art"
+            >
+              Art</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,1)"
+              value="Physics"
+            >
+              Physics</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,1)"
+              value="Biology"
+            >
+              Biology</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,1)"
+              value="Economy"
+            >
+              Economy</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,1)"
+              value="Sport"
+            >
+              Sport</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,1)"
+              value="Geography"
+            >
+              Geography</button
+            ><br />
+            <p class="hide" id="hide">
+              Anda hanya dapat memilih 4 mata pelajaran
+            </p>
+          </fieldset>
+        </div>
+        <div class="question">
+          <label for="inside" class="big"
+            >What is your favorites subjects in Informatics?
+          </label>
+          <fieldset name="inside" id="inside">
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Desain web"
+            >
+              Desain web</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Sistem Operasi"
+            >
+              Sistem Operasi</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Pemrograman Visual"
+            >
+              Pemrograman Visual</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Algoritma Pemrograman"
+            >
+              Algoritma Pemrograman</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Data"
+            >
+              Data</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Pemrograman Berorientasi Objek"
+            >
+              Pemrograman Berorientasi Objek</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Statistika dan Probabilitas"
+            >
+              Statistika dan Probabilitas</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Pemrograman Mobile"
+            >
+              Pemrograman Mobile</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Jaringan Komputer"
+            >
+              Jaringan Komputer</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Grafika Komputer"
+            >
+              Grafika Komputer</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Pemrograman Web"
+            >
+              Pemrograman Web</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Komputer Animasi"
+            >
+              Komputer Animasi</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Pengolahan Citra Digital"
+            >
+              Pengolahan Citra Digital</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,2)"
+              value="Sistem Keamanan Informasi"
+            >
+              Sistem Keamanan Informasi</button
+            ><br />
+            <p class="hide" id="hide2">
+              Anda hanya dapat memilih 4 mata pelajaran
+            </p>
+          </fieldset>
+        </div>
+        <div class="question">
+          <label for="other"
+            >What are your hobbies or interests outside of school ?</label
+          >
+          <fieldset name="other" id="other">
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,3)"
+              value="Sport"
+            >
+              Sport</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,3)"
+              value="Art"
+            >
+              Art</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,3)"
+              value="Movies"
+            >
+              Movies</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,3)"
+              value="Read books"
+            >
+              Read books</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,3)"
+              value="Video Games"
+            >
+              Video Games</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,3)"
+              value="Coding"
+            >
+              Coding</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,3)"
+              value="Hang out with friends"
+            >
+              Hang out with friends</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,3)"
+              value="Photography"
+            >
+              Photography</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,3)"
+              value="Mechanical"
+            >
+              Mechanical</button
+            ><br />
+            <button
+              type="button"
+              class="select"
+              onclick="add(this,3)"
+              value="Social Media"
+            >
+              Social Media</button
+            ><br />
+            <p class="hide" id="hide3">
+              Anda hanya dapat memilih 9 mata pelajaran
+            </p>
+          </fieldset>
+        </div>
+        <div class="question">
+          <label for="jna">Junior Network Administrator Average </label>
+          <input type="text" id="jna" name="jna" class="txt" /><br />
+          <label for="jwp">Junior Web Programer Average </label>
+          <input type="text" id="jwp" name="jwp" class="txt" /><br />
+          <label for="jp">Junior Programer </label>
+          <input type="text" id="jp" name="jp" class="txt" /><br />
+        </div>
+        <div class="question">
+          <label for="name"
+            >Quick IQ Test :
+            <a href="https://www.free-iqtest.net/">Test Link</a>
+          </label>
+          <label for="name">Put your IQ score here : </label>
+          <input type="text" id="name" name="name" class="txt" /><br />
+        </div>
+        <button type="button" class="submit" onclick="send()">Hasil</button>
+        <p class="id" value={{mydata.id}}></p>
+        <p class="major" value={{mydata.major}}></p>
       </form>
     </div>
-</body>
+  </body>
 </html>
