@@ -1,55 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script defer src="../static/js/profile.js"></script>
-        <link rel="stylesheet" href="../static/css/profile.css" />
-        <link rel="stylesheet" href="../static/css/header.css" />
-        <title>Profile</title>
-      </head>
-      <body>
-        <header>
-          <div class="left-side">
-            <a target="_blank" class="logo" href="https://polnep.ac.id/"
-              ><img class="logo" src="../static/img/logo.png"
-            /></a>
-            <div id="divv" class="divv"></div>
-            <h1 id="texts">
-              Politeknik<br />
-              Negeri <br />Pontianak
-            </h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="../static/js/profile.js"></script>
+    <link rel="stylesheet" href="../static/css/results.css" />
+    <link rel="stylesheet" href="../static/css/header.css" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <header>
+      <div class="left-side">
+        <a target="_blank" class="logo" href="https://polnep.ac.id/"
+          ><img class="logo" src="../static/img/logo.png"
+        /></a>
+        <div id="divv" class="divv"></div>
+        <h1 id="texts">
+          Politeknik<br />
+          Negeri <br />Pontianak
+        </h1>
+      </div>
+      <div class="right-side">
+        <a class="light-mode"
+          ><img
+            class="moon"
+            id="moon"
+            src="../static/img/moon-regular.svg"
+            onclick="dark()"
+        /></a>
+        <a class="profile-icon" href="/profile"
+          ><img src="../static/img/drake.jpg"
+        /></a>
+      </div>
+    </header>
+    <div class="menu">
+      <nav>
+        <h1>Menu</h1>
+        <li>
+          <a href="/"
+            ><img src="../static/img/home.svg" />
+            <h4>Main</h4></a
+          >
+        </li>
+
+        <li class="admin">
+          <a href=""
+            ><span class="material-symbols-rounded"> search </span>
+            <h4>Results</h4></a
+          >
+        </li>
+
+        <li>
+          <a href=""
+            ><img src="../static/img/logout.svg" />
+            <h4>Logout</h4></a
+          >
+        </li>
+      </nav>
+      <img class="baymax hide" src="../static/img/baymax-left.png" />
+    </div>
+    <div></div>
+    <div class="profile">
+      <h1 class="title">Parametres du compte</h1>
+      <div class="container">
+        <div class="content">
+          <h1 class="my-profile">My profile</h1>
+          <div class="profile-details">
+            <img src="../static/img/drake.jpg" />
+            <div>
+              <h1>{{mydata.name}}</h1>
+              <p>{{mydata.major}}</p>
+            </div>
           </div>
-          <div class="right-side">
-            <a class="light-mode"
-              ><img
-                class="moon"
-                id="moon"
-                src="../static/img/moon-regular.svg"
-                onclick="dark()"
-            /></a>
-            <a class="profile-icon" href="/profile"><img src="../static/img/drake.jpg" /></a>
+          <h1 class="personnal-informations">Personnal information</h1>
+          <div class="informations">
+            <div>
+              <label>Full Name</label><br />
+              <span>{{mydata.name}}</span>
+            </div>
+            <div>
+              <label>Status</label><br />
+              <span>{{mydata.status}}</span>
+            </div>
+            <div>
+              <label>Student ID</label><br />
+              <span>{{mydata.id}}</span>
+            </div>
           </div>
-        </header>
-        <div>
-          <table>
-            <thead>
-              <tr class="table100-head">
-                <th class="column1">Type</th>
-                <th class="column2">Phrase</th>
-              </tr>
-            </thead>
-            <tbody>
-          {% for i in subjects %}
-              <tr>
-                <td class="column1">{{prediction}} #{{ forloop.counter }}</td>
-                <td class="column2">
-                  {{ i}}
-                </td>
-              </tr>
-          {% endfor %}
-            </tbody>
-          </table>
+
+          <div class="subjects">
+            <h1 class="my-profile">Phrases</h1>
+            <div class="table">
+              <table>
+                <thead>
+                  <tr class="table100-head">
+                    <th class="column1">Type</th>
+                    <th class="column2">Phrase</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in subjects %}
+                  <tr>
+                    <td class="column1">
+                      {{prediction}} #{{ forloop.counter }}
+                    </td>
+                    <td class="column2">{{ i}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </body>
 </html>
