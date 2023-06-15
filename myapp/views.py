@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#from gpt import you
+# from gpt import you
 import re
 import json
 from django.http import HttpResponse
@@ -12,7 +12,8 @@ import security.huffman as h
 # Create your views here.
 logged = False
 dict = {}
-subjects = ""
+subjects = []
+prediction = ''
 alreadyPredicted = False
 
 
@@ -165,21 +166,26 @@ def get_query(number_subjects: int, specification: str, interests: list) -> str:
 
 
 def getSubjects(studentIQ: int, subjectsOutside: list, subjectsIT: list, name: str, hobbies: list, juniorNetworkAdministrator: int,
-                juniorWebProgramer: int, juniorProgramer: int) -> str:
+                juniorWebProgramer: int, juniorProgramer: int) -> dict:
     global alreadyPredicted
     global subjects
+    global prediction
 
     if not alreadyPredicted:
         alreadyPredicted = True
         #
         prediction = getPrediction(studentIQ, subjectsOutside, subjectsIT, name, hobbies, juniorNetworkAdministrator,
                                    juniorWebProgramer, juniorProgramer)
-        subjects = get_query(10, prediction, hobbies).text
+        subjects = get_query(
+            5, prediction, hobbies).text
+        subjects = re.sub(
+            r"\b([0-9]|[1-9][0-9]|100)\b\.\s+", "", subjects).split("\n")
     return subjects
 
 
 def result(request):
     global subjects
+    global prediction
     studentIQ = int(request.GET.get('studentIQ', None))
 
     subjectsOutside = ['-', '-', '-', '-']
@@ -196,49 +202,47 @@ def result(request):
     hobbiesRAW = request.GET.get('hobbies', None).split(',')
     for i in range(len(hobbiesRAW)):
         hobbies[i] = hobbiesRAW[i]
-        
 
     name = request.GET['name']
     juniorNetworkAdministrator = int(request.GET.get('jna', None))
     juniorWebProgramer = int(request.GET.get('jwp', None))
     juniorProgramer = int(request.GET.get('jp', None))
-    
-    id= request.GET['id']
-    major=request.GET['major']
-    
-    #----- DATABASE -----#
-    
+
+    id = request.GET['id']
+    major = request.GET['major']
+
+    # ----- DATABASE -----#
+
     conn = sqlite3.connect('db.sqlite3')
     cur = conn.cursor()
 
     cur.execute(
         'SELECT COUNT(*) FROM myapp_user WHERE id=?', (id,))
     result = cur.fetchone()[0]
-    
+
     cur.execute(
         'SELECT COUNT(*) FROM myapp_data WHERE studentId=?', (id,))
     result2 = cur.fetchone()[0]
-    
-    if (int(result)!=0 and result2==0):
-        print('INSERT INTO myapp_data (studentId, name, major, iq, interestOutsideInformatic, interestOutsideInformatic_2, interestOutsideInformatic_3, interestOutsideInformatic_4, interestInsideInformatic, interestInsideInformatic_2, interestInsideInformatic_3, interestInsideInformatic_4, hobby, hobby_2, hobby_3, hobby_4, hobby_5, hobby_6, hobby_7, hobby_8, hobby_9, juniorNetworkAdministrator, juniorWebProgramer, juniorProgramer) VALUES ('+str(id)+',"'+name+'","'+major+'","'+str(studentIQ)+'","'+subjectsOutside[0]+'","'+subjectsOutside[1]+'","'+subjectsOutside[2]+'","'+subjectsOutside[3]+'","'+subjectsIT[0]+'","'+subjectsIT[1]+'","'+subjectsIT[2]+'","'+subjectsIT[3]+'","'+hobbies[0]+'","'+hobbies[1]+'","'+hobbies[2]+'","'+hobbies[3]+'","'+hobbies[4]+'","'+hobbies[5]+'","'+hobbies[6]+'","'+hobbies[7]+'","'+hobbies[8]+'","'+str(juniorNetworkAdministrator)+'","'+str(juniorWebProgramer)+'","'+str(juniorProgramer)+'")')
+
+    if (int(result) != 0 and result2 == 0):
+        print('INSERT INTO myapp_data (studentId, name, major, iq, interestOutsideInformatic, interestOutsideInformatic_2, interestOutsideInformatic_3, interestOutsideInformatic_4, interestInsideInformatic, interestInsideInformatic_2, interestInsideInformatic_3, interestInsideInformatic_4, hobby, hobby_2, hobby_3, hobby_4, hobby_5, hobby_6, hobby_7, hobby_8, hobby_9, juniorNetworkAdministrator, juniorWebProgramer, juniorProgramer) VALUES ('+str(id)+',"'+name+'","' +
+              major+'","'+str(studentIQ)+'","'+subjectsOutside[0]+'","'+subjectsOutside[1]+'","'+subjectsOutside[2]+'","'+subjectsOutside[3]+'","'+subjectsIT[0]+'","'+subjectsIT[1]+'","'+subjectsIT[2]+'","'+subjectsIT[3]+'","'+hobbies[0]+'","'+hobbies[1]+'","'+hobbies[2]+'","'+hobbies[3]+'","'+hobbies[4]+'","'+hobbies[5]+'","'+hobbies[6]+'","'+hobbies[7]+'","'+hobbies[8]+'","'+str(juniorNetworkAdministrator)+'","'+str(juniorWebProgramer)+'","'+str(juniorProgramer)+'")')
         cur.execute(
-            'INSERT INTO myapp_data (studentId, name, major, iq, interestOutsideInformatic, interestOutsideInformatic_2, interestOutsideInformatic_3, interestOutsideInformatic_4, interestInsideInformatic, interestInsideInformatic_2, interestInsideInformatic_3, interestInsideInformatic_4, hobby, hobby_2, hobby_3, hobby_4, hobby_5, hobby_6, hobby_7, hobby_8, hobby_9, juniorNetworkAdministrator, juniorWebProgramer, juniorProgramer) VALUES ('+str(id)+',"'+name+'","'+major+'","'+str(studentIQ)+'","'+subjectsOutside[0]+'","'+subjectsOutside[1]+'","'+subjectsOutside[2]+'","'+subjectsOutside[3]+'","'+subjectsIT[0]+'","'+subjectsIT[1]+'","'+subjectsIT[2]+'","'+subjectsIT[3]+'","'+hobbies[0]+'","'+hobbies[1]+'","'+hobbies[2]+'","'+hobbies[3]+'","'+hobbies[4]+'","'+hobbies[5]+'","'+hobbies[6]+'","'+hobbies[7]+'","'+hobbies[8]+'","'+str(juniorNetworkAdministrator)+'","'+str(juniorWebProgramer)+'","'+str(juniorProgramer)+'")'
+            'INSERT INTO myapp_data (studentId, name, major, iq, interestOutsideInformatic, interestOutsideInformatic_2, interestOutsideInformatic_3, interestOutsideInformatic_4, interestInsideInformatic, interestInsideInformatic_2, interestInsideInformatic_3, interestInsideInformatic_4, hobby, hobby_2, hobby_3, hobby_4, hobby_5, hobby_6, hobby_7, hobby_8, hobby_9, juniorNetworkAdministrator, juniorWebProgramer, juniorProgramer) VALUES ('+str(id)+',"'+name+'","'+major+'","'+str(
+                studentIQ)+'","'+subjectsOutside[0]+'","'+subjectsOutside[1]+'","'+subjectsOutside[2]+'","'+subjectsOutside[3]+'","'+subjectsIT[0]+'","'+subjectsIT[1]+'","'+subjectsIT[2]+'","'+subjectsIT[3]+'","'+hobbies[0]+'","'+hobbies[1]+'","'+hobbies[2]+'","'+hobbies[3]+'","'+hobbies[4]+'","'+hobbies[5]+'","'+hobbies[6]+'","'+hobbies[7]+'","'+hobbies[8]+'","'+str(juniorNetworkAdministrator)+'","'+str(juniorWebProgramer)+'","'+str(juniorProgramer)+'")'
         )
         conn.commit()
         conn.close()
     else:
         conn.close()
-        
-        
-    
 
     # ---- MODEL ----#
-    """subjects = getSubjects(studentIQ, subjectsOutside, subjectsIT, name, hobbies, juniorNetworkAdministrator,
-                           juniorWebProgramer, juniorProgramer)"""
-    return render(request, "result.html", {"subjects": subjects})
+
+    subjects = getSubjects(studentIQ, subjectsOutside, subjectsIT, name, hobbies, juniorNetworkAdministrator,
+                           juniorWebProgramer, juniorProgramer)
+    return render(request, "result.html", {"subjects": subjects, 'prediction': prediction})
 
 
 def profile(request):
     print(logged, dict)
     return (render(request, 'profile.html', {"mydata": dict}))
-
